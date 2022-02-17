@@ -4,16 +4,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Gymfit | Kontakt</title>
 		<link rel="stylesheet" type="text/css" href="stil.css" />
+		<?php include('../gymfitAPI/authenticationu.php'); ?>
 		<style>
 		.tekst {
-			bottom: 0;
-			right: 0;
-			width: 1000px;
+			width: auto;
 		}
 		.contactInfo {
-			bottom: 0;
-			right: 0;
-			width: 1000px;
+			width: auto;
 		}
 		.contactForm{
 			border-radius: 5px;
@@ -40,6 +37,10 @@
 			width: 100px;
 			border-radius: 50%;
 			border: 1px solid #ddd;
+		}
+		h1 {
+			font-size: 200%;
+			text-align:center;
 		}
 		</style>	
 	</head>

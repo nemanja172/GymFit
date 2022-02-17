@@ -1,7 +1,7 @@
 function terminUporabnika()
 {
-	var ID_uporabnika = document.getElementById("obrazec")["ID_uporabnika"].value;
-	document.getElementById("odgovor").innerHTML = "";
+	var ID_uporabnika = document.getElementById("hidden").value;
+	document.getElementById("hidden").innerHTML = "";
 	
 	var xmlhttp = new XMLHttpRequest();										 
 	xmlhttp.onreadystatechange = function()									
@@ -21,11 +21,11 @@ function terminUporabnika()
 		}
 		if (this.readyState == 4 && this.status != 200)
 		{
-			document.getElementById("odgovor").innerHTML="Ni uspelo! " +this.status;
+			document.getElementById("hidden").innerHTML="Ni uspelo! " +this.status;
 		}
 	};
 	 
-	xmlhttp.open("GET", "/gymfit/termini/"+ID_uporabnika, true);							
+	xmlhttp.open("GET", "/gymfitAPI/termini/"+ID_uporabnika, true);							
 	xmlhttp.send();													
 }
 
@@ -60,7 +60,7 @@ function posodobiPodatke()
 	 
 	var ID_uporabnika = document.getElementById("obrazec")["ID_uporabnika"].value;
 	
-	xmlhttp.open("PUT", "/gymfit/uporabniki/"+ID_uporabnika, true);							// določimo metodo in URL zahteve, izberemo asinhrono zahtevo (true)
+	xmlhttp.open("PUT", "/gymfitAPI/uporabniki/"+ID_uporabnika, true);							// določimo metodo in URL zahteve, izberemo asinhrono zahtevo (true)
 	xmlhttp.send(JSONdata);	
 }
 

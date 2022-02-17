@@ -29,6 +29,16 @@
 	li a:hover {
 		background-color: #ffcc99;
 	}
+	button{
+		display: block;
+		color: black;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		border: 1px solid black;
+		border-radius: 20px 20px;
+		background-color: #ffe5b4;
+	}
 	</style>
 	<div class="float">
 		<img id="logo" src="logo.png"/>
@@ -43,6 +53,10 @@
 				<li><a href="vsiFitnesi.php">Vsi fitnesi</a></li>
 				<li><a href="dodajFitnes.php">Dodajanje fitnesa</a></li>
 				<li><a href="objekt.php">Podatki fitnesa</a></li>
-				<li style="float:right"><a href="index.php">Odjava</a></li>
+				<li style="float:right">
+					<form action="../gymfitAPI/odjava.php" method="POST">
+					<button type="submit" name="logout_btn">Odjava</button>
+					</form>
+				</li>
 			</ul>	
 	<hr/>

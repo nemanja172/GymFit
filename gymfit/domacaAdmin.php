@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>GymFit | Prva stran</title>
 		<link rel="stylesheet" type="text/css" href="stil.css" />
+		<?php include('../gymfitAPI/authentication.php'); ?>
 		<style>
 		.slika {
 			bottom: 0;
@@ -18,7 +19,8 @@
 	<body>
 		<div class="center">
 			<?php include"adminMeni.html"?>
-			<p>Dobrodošli v administratorski vmesnik. Uredite podatke obstoječih uporabnikov, dodajte nove uporabnike, nove objekte, ali spremenite pomembne informacije</p>
+			<?php include('../gymfitAPI/message.php'); ?>
+			<p>Uredite podatke obstoječih uporabnikov, dodajte nove uporabnike, nove objekte, ali spremenite pomembne informacije</p>
 			<img src="images/admin.png" class="slika" width="300">
 		</div>
 	</body>

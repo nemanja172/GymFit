@@ -26,7 +26,7 @@ function podatkiUporabnika()
 		}
 	};
 	 
-	xmlhttp.open("GET", "/gymfit/uporabniki/"+ID_uporabnika, true);							
+	xmlhttp.open("GET", "/gymfitAPI/uporabniki/"+ID_uporabnika, true);							
 	xmlhttp.send();													
 }
 function podatkiVsihUporabnika()
@@ -50,7 +50,7 @@ function podatkiVsihUporabnika()
 		}
 	};
 	 
-	xmlhttp.open("GET", "/gymfit/uporabniki", true);							
+	xmlhttp.open("GET", "/gymfitAPI/uporabniki", true);							
 	xmlhttp.send();													
 }
 
@@ -101,7 +101,7 @@ function posodobiPodatke()
 	 
 	var ID_uporabnika = document.getElementById("obrazec")["ID_uporabnika"].value;
 	
-	xmlhttp.open("PUT", "/gymfit/uporabniki/"+ID_uporabnika, true);							// določimo metodo in URL zahteve, izberemo asinhrono zahtevo (true)
+	xmlhttp.open("PUT", "/gymfit/uporabnikiAPI/"+ID_uporabnika, true);							// določimo metodo in URL zahteve, izberemo asinhrono zahtevo (true)
 	xmlhttp.send(JSONdata);	
 }
 
@@ -152,6 +152,6 @@ function izbrisiUporabnika()
 		}
 	};
 	
-	xmlhttp.open("DELETE", "/gymfit/uporabniki/"+ID_uporabnika, true);					
+	xmlhttp.open("DELETE", "/gymfitAPI/uporabniki/"+ID_uporabnika, true);					
 	xmlhttp.send();													
 }

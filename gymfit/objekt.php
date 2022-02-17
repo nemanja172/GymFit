@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>GymFit - Podatki uporabnika</title>
 		<link rel="stylesheet" type="text/css" href="stil.css" />
+		<?php include('../gymfitAPI/authentication.php'); ?>
 		<script src="js/fitnes.js"></script>
 				<style>
 		input[type=text], select {

@@ -31,6 +31,6 @@ function dodajFitnes()
 		}
 	};
 	 
-	xmlhttp.open("POST", "/gymfit/fitnesi", true);							// določimo metodo in URL zahteve, izberemo asinhrono zahtevo (true)
+	xmlhttp.open("POST", "/gymfitAPI/fitnesi", true);							// določimo metodo in URL zahteve, izberemo asinhrono zahtevo (true)
 	xmlhttp.send(JSONdata);													// priložimo podatke in izvedemo zahtevo
 }

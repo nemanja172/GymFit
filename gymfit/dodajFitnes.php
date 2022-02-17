@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>GymFit - Vpis fitnesa</title>
 		<link rel="stylesheet" type="text/css" href="stil.css" />
+		<?php include('../gymfitAPI/authentication.php'); ?>
 		<script src="js/dodajFitnes.js"></script>
 		<style>
 		input[type=text], select {

@@ -4,17 +4,21 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Gymfit | Termini uporabnika</title>
 	<link rel="stylesheet" type="text/css" href="stil.css" />
+	<?php include('../gymfitAPI/authenticationu.php'); 
+	$ID_uporabnika = $_SESSION['auth_user']['ID_uporabnika'];?>
+	<script src="js/termin.js"></script>
 	<style>
 		#tabela {
 			font-family: Arial, Helvetica, sans-serif;
 			border-collapse: collapse;
-			width: 100%;
+			width: 50%;
 		}
 
 		#tabela td, #tabela th {
 			border: 3px solid #ddd;
 			border-collapse: collapse;
 			padding: 8px;
+			margin-left:1dp;
 		}
 
 		#tabela tr:nth-child {background-color: #f2f2f2;}
@@ -28,7 +32,7 @@
 			background-color: #ffe5b4;
 			color: black;
 			border-collapse: collapse;
-			width: 10%;
+			width: 20%;
 		}
 		#button {
 			background-color: #ffe5b4;
@@ -56,62 +60,19 @@
 		}
 	</style>
 	</head>
-	<body>
+	<body onload="terminUporabnika();">
 		<?php include "Meni.html"?>
 		<center>
-			<p>Z vnosom e-maila lahko preverite uporabljene termine. </p>
+			<p>Na tej strani lahko preverite uporabljene termine. </p>
 		<div class="container">
-			<form action="" method="POST">
-				<input type="text" name="email" placeholder="Vnesite Vas e-mail" />
-				<input type="submit" id='button' name="search" value="Iskanje"/>
-			</form>
+			<input type="hidden" id="hidden" name="hidden" value="<?php echo $ID_uporabnika;?>">
 			<table id="tabela">
-							<tr>
-								<th>Številka termina</th>
-								<th>Ime fitnesa</th>
-								<th>Datum</th>
-							</tr><br>
-						<?php
-						$connection = mysqli_connect("localhost","root","");
-						$db = mysqli_select_db($connection,'gymfit');
-						
-						if(isset($_POST['search']))
-						{
-							$email = $_POST['email'];
-							
-							$query = "SELECT f.Ime as Ime_fitnesa, t.datum as Datum FROM termin t join fitnes f ON(t.ID_fitnesa = f.ID_fitnesa) join uporabnik u ON(u.ID_uporabnika = t.ID_uporabnika) WHERE u.email='$email' ORDER BY Datum";
-							$query_run = mysqli_query($connection,$query);
-							if (!$query_run) {
-								printf("Error: %s\n", mysqli_error($connection));
-							exit();
-}
-							$no = 0;
-							while($row = mysqli_fetch_array($query_run))
-							{
-								$no++;
-								?>
-								<tr>
-									<td><?php echo $no; ?> </td>
-									<td><?php echo $row['Ime_fitnesa']; ?> </td>
-									<td><?php echo $row['Datum']; ?> </td>
-								</tr>
-								<?php
-							}
-							$sql = "SELECT COUNT(*) as 'stevilo', ime, priimek, Paket, CASE WHEN Paket = 'S' THEN 10 WHEN Paket = 'M' THEN 16 WHEN Paket = 'L' THEN 20 WHEN Paket = 'X' THEN 30 END AS preostalo from uporabnik INNER JOIN termin on uporabnik.ID_uporabnika=termin.ID_uporabnika where email = '$email'";
-							$sql2 = "";
-							$result = mysqli_query($connection, $sql);
-
-							if (mysqli_num_rows($result) > 0) {
-								// output data of each row
-								while($row = mysqli_fetch_assoc($result)) {
-								echo "Število uporabljenih terminov je: " . $row["stevilo"]. " - Uporabil/a jih je: " . $row["ime"]. " " . $row["priimek"]. "<br> Število terminov v izbranem paketu: " . $row["preostalo"];
-								}
-							} else {
-								echo "Ni uporabljenih terminov";
-							}
-						}
-						?>
+				<tr >
+					<th>Ime fitnesa</th>
+					<th>Datum</th>
+				</tr><br>		
 			</table>
+			<div id="odgovor"></div>
 		</center>
 	</body>
 </html>

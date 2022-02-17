@@ -29,6 +29,16 @@
 	li a:hover {
 		background-color: #ffcc99;
 	}
+	button{
+		display: block;
+		color: black;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		border: 1px solid black;
+		border-radius: 20px 20px;
+		background-color: #ffe5b4;
+	}
 	</style>
 	<body>
 		<div class="float">
@@ -43,7 +53,11 @@
 					<li><a href="profil.php">Moj profil</a></li>
 					<li><a href="onas.php">O nas</a></li>
 					<li><a href="kontakt.php">Kontakt</a></li>
-					<li style="float:right"><a href="index.php">Odjava/Registracija</a></li>
+					<li style="float:right">
+						<form action="../gymfitAPI/odjava.php" method="POST">
+							<button type="submit" name="logout_btn">Odjava</button>
+						</form>
+					</li>
 				</ul>
 		<hr/>
 	</body>

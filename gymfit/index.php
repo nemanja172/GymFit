@@ -1,42 +1,3 @@
-<?php
-$DEBUG = true;							// Priprava podrobnejših opisov napak (med testiranjem)
-
-include("orodja.php"); 					// Vključitev 'orodij'
-
-$zbirka = dbConnect();					// Pridobitev povezave s podatkovno zbirko
-
-if($_SERVER["REQUEST_METHOD"]=="POST")
-{
-	$email=$_POST["email"];
-	$geslo=$_POST["geslo"];
-
-	
-	$sql="select * from uporabnik where email='".$email."' AND geslo='".$geslo."' ";
-	
-	$result=mysqli_query($zbirka,$sql);
-	
-	$row=mysqli_fetch_array($result);
-	
-	if(isset($row["user_level"]))
-	{
-		if($row["user_level"]=="1")
-		{
-			header("location:domacaAdmin.php");
-		}
-	
-		elseif($row["user_level"]=="0")
-		{
-			header("location:domaca.php");
-		}
-	}
-	else
-	{
-		header("location:napacno.php");
-	}
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -44,6 +5,26 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 		<title>Gymfit - Prijava</title>
 		<link rel="stylesheet" type="text/css" href="css/stilprijava.css">
 		<script src="js/dodajUporabnika.js"></script>
+		<?php 
+		session_start();
+		
+		if(isset($_SESSION['auth']))
+		{
+			if(!isset($_SESSION['message'])){
+				$_SESSION['message']='Že ste registrirani';
+				if($_SESSION['user_level'] !== "1")
+				{
+					header("location:http://localhost/gymfit/domaca.php");
+					exit(0);
+				}
+				else
+				{
+					header("location:http://localhost/gymfit/domacaAdmin.php");
+					exit(0);
+				}
+			}
+		}
+		?>
 		<style>
 		.slika {
 			display: block;
@@ -56,17 +37,19 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 	<body>
 		<div class="hero">
 			<div class="form-box">
+				<?php include('../gymfitAPI/message.php'); ?>
 				<div class="button-box">
 					<div id="btn"></div>
 						<button type="button" class="toggle-btn" onclick="login()">Prijava</button>
 						<button type="button" class="toggle-btn" onclick="register()">Registracija</button>		
 				</div>
-				<form id="login" class="input-group" action="#" method="POST">
+				<form id="login" class="input-group" action="../gymfitAPI/prijava.php" method="POST">
 					<input type="text" class="input-field" name="email" placeholder="Email" required>
 					<input type="password" class="input-field" name="geslo" placeholder="Geslo" required>
 					<button type="submit" class="submit-btn">Prijava</button>
 				</form>
-				<form id="register" class="input-group" action="registracija.php" method="POST">
+				
+				<form id="register" class="input-group" action="../gymfitAPI/registracija.php" method="POST">
 					<input type="text" class="input-field" name="ime" placeholder="Ime" required>
 					<input type="text" class="input-field" name="priimek" placeholder="Priimek" required>
 					<input type="password" class="input-field" name="geslo" placeholder="Geslo" required>

@@ -5,6 +5,7 @@
 		<title>Gymfit - Objekti</title>
 		<link rel="stylesheet" type="text/css" href="stil.css" />
 		<script src="js/fitnes.js"></script>
+		<?php include('../gymfitAPI/authenticationu.php'); ?>
 		<style>
 		#tabela {
 			font-family: Arial, Helvetica, sans-serif;
@@ -57,7 +58,7 @@
 			<p>Za rezervacijo kliknite gumb Rezerviraj, potrebovali boste svoj ID in ID fitnesa.</p>
 			<table id="tabela">
 				<tr>
-					<th>ID objekta</th>
+					<th style='width:150px'>ID objekta</th>
 					<th>Ime</th>
 					<th>Mesto</th>
 					<th>Naslov</th>

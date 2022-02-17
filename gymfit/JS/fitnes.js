@@ -24,7 +24,7 @@ function fitnesi()
 		}
 	};
 	 
-	xmlhttp.open("GET", "/gymfit/fitnesi", true);							
+	xmlhttp.open("GET", "/gymfitAPI/fitnesi", true);							
 	xmlhttp.send();													
 }
 
@@ -76,7 +76,7 @@ function podatkiFitnesa()
 		}
 	};
 	 
-	xmlhttp.open("GET", "/gymfit/fitnesi/"+ID_fitnesa, true);							
+	xmlhttp.open("GET", "/gymfitAPI/fitnesi/"+ID_fitnesa, true);							
 	xmlhttp.send();													
 }	
 
@@ -101,7 +101,7 @@ function posodobiPodatke()
 	 
 	var ID_fitnesa = document.getElementById("obrazec")["ID_fitnesa"].value;
 	
-	xmlhttp.open("PUT", "/gymfit/fitnesi/"+ID_fitnesa, true);							// določimo metodo in URL zahteve, izberemo asinhrono zahtevo (true)
+	xmlhttp.open("PUT", "/gymfitAPI/fitnesi/"+ID_fitnesa, true);							// določimo metodo in URL zahteve, izberemo asinhrono zahtevo (true)
 	xmlhttp.send(JSONdata);	
 }
 

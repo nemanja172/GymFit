@@ -31,6 +31,6 @@ function dodajUporabnika()
 		}
 	};
 	 
-	xmlhttp.open("POST", "/gymfit/uporabniki", true);							// določimo metodo in URL zahteve, izberemo asinhrono zahtevo (true)
+	xmlhttp.open("POST", "/gymfitAPI/uporabniki", true);							// določimo metodo in URL zahteve, izberemo asinhrono zahtevo (true)
 	xmlhttp.send(JSONdata);													// priložimo podatke in izvedemo zahtevo
 }

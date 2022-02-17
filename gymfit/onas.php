@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Gymfit | O nas</title>
 		<link rel="stylesheet" type="text/css" href="stil.css" />
+		<?php include('../gymfitAPI/authenticationu.php'); ?>
 		<style>
 		.slika {
 			display: block;
@@ -13,6 +14,10 @@
 		}
 		p {
 			font-size: 120%;
+		}
+		h1 {
+			font-size: 200%;
+			text-align:center;
 		}
 		</style>		
 	</head>

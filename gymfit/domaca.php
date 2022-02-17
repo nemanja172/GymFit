@@ -4,6 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>GymFit | Prva stran</title>
 		<link rel="stylesheet" type="text/css" href="stil.css"/>
+		<?php include('../gymfitAPI/authenticationu.php'); ?>
 		<style>
 		#slika {
 			width: 50%;
@@ -22,10 +23,11 @@
 	</head>
 	<body>
 		<div class="center">
-			<?php include"Meni.html"?>
-			<h1>Dobro došli na spletno stran GymFit </h1> 
-			<p> Aplikacija GymFit vam omogoča trening v različnih objektih v celi državi. Sistem omogoča najlažji dostop do vaših najljubših športnih centrov. </p>
-			<p> Vadite v različnih objektih po celotni sSloveniji.</p>
+			<?php include("Meni.html");?>
+			<!-- <h1>Dobrodošli na spletno stran GymFit </h1> --> 
+			<?php include('../gymfitAPI/message.php'); ?>
+			<p>Zdravo, <?php echo $_SESSION['auth_user']['ime']; ?>, aplikacija GymFit vam omogoča trening v različnih objektih v celi državi. Sistem omogoča najlažji dostop do vaših najljubših športnih centrov. </p>
+			<p> Vadite v različnih objektih po celotni Sloveniji.</p>
 			<p>	Ena članarina zadostuje za vse vaše fitnes potrebe!</p>
 			<img src="images/training.jpg" id="slika"/>
 		</div>
