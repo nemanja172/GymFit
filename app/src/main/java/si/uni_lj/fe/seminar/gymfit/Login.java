@@ -66,8 +66,8 @@ public class Login extends AppCompatActivity {
             if (!email.isEmpty() || !geslo.isEmpty()) {
                 Login(email, geslo);
             } else {
-                textInputEditTextEmail.setError("Prosim, unesite email");
-                textInputEditTextGeslo.setError("Prosim, unesite geslo");
+                textInputEditTextEmail.setError("Prosim, unesite email!");
+                textInputEditTextGeslo.setError("Prosim, unesite geslo!");
             }
         });
     }
