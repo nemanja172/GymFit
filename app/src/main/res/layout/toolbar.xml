@@ -19,15 +19,14 @@
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
             android:textColor="@color/orange_dark"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:focusable="true" />
 
-        <TextView
+        <Button
             android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/odjava"
-            android:onClick="onClick"
             android:layout_alignParentEnd="true"
             android:clickable="true"
             android:textColor="@color/orange_dark"

@@ -24,18 +24,18 @@
             android:text="Dobrodošli"/>
 
         <TextView
-            android:layout_below="@+id/welcome"
-            android:id="@+id/name"
+            android:id="@+id/ime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:gravity="center"
-            android:textColor="@android:color/black"
+            android:layout_below="@+id/welcome"
             android:layout_marginTop="40dp"
-            android:text="Uporabnik"/>
+            android:gravity="center"
+            android:text="Uporabnik"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
 
         <TextView
-            android:layout_below="@+id/name"
+            android:layout_below="@+id/ime"
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

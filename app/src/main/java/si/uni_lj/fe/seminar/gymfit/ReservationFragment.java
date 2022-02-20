@@ -73,7 +73,7 @@ public class ReservationFragment extends Fragment {
                     data[1] = ID_fitnesa;
                     data[2] = datum;
 
-                    PutData putData = new PutData("http://192.168.64.104/gymfit/reservation.php", "POST", field, data);
+                    PutData putData = new PutData("http://192.168.64.104/gymfitApp/reservation.php", "POST", field, data);
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
                             progressBar.setVisibility(View.GONE);
@@ -92,6 +92,7 @@ public class ReservationFragment extends Fragment {
             }
             else{
                 Toast.makeText(getActivity().getApplicationContext(), "Vsa polja so obvezna", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
             }
         });
 

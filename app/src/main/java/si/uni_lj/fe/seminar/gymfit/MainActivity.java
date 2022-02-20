@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,7 +22,8 @@ import org.w3c.dom.Text;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView navigationView;
-    TextView textViewLogout;
+    Button Logout;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.bottom_navigation);
         getSupportFragmentManager().beginTransaction().replace(R.id.body_container, new HomeFragment()).commit();
         navigationView.setSelectedItemId(R.id.nav_home);
+        sessionManager = new SessionManager(this);
 
         navigationView.setOnNavigationItemSelectedListener(item -> {
             Fragment fragment = null;
@@ -56,13 +59,14 @@ public class MainActivity extends AppCompatActivity {
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.body_container, fragment).commit();
 
-            textViewLogout = (TextView) findViewById(R.id.logout);
-            textViewLogout.setOnClickListener(v -> new AlertDialog.Builder(MainActivity.this)
+            Logout = findViewById(R.id.logout);
+            Logout.setOnClickListener(v -> new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Odjava")
                     .setMessage("Se želite odjaviti?")
                     .setPositiveButton("Da", (dialog, which) -> {
                         Intent intent = new Intent(getApplicationContext(), Login.class);
                         startActivity(intent);
+                        sessionManager.logout();
                     })
                     .setNegativeButton("Ne", (dialog, which) -> {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);

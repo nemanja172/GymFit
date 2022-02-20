@@ -1,8 +1,9 @@
 package si.uni_lj.fe.seminar.gymfit;
 
-import android.content.Intent;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,10 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class HomeFragment extends Fragment {
 
-    private TextView email;
+    private TextView ime, email;
+    SessionManager sessionManager;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -36,12 +41,18 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
+        sessionManager = new SessionManager(getActivity());
+        sessionManager.checkLogin();
+
+        ime = view.findViewById(R.id.ime);
         email = view.findViewById(R.id.email);
 
-        Intent intent = getActivity().getIntent();
-        String extraEmail = intent.getStringExtra("email");
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        String mIme = user.get(sessionManager.IME);
+        String mEmail = user.get(sessionManager.EMAIL);
 
-        email.setText(extraEmail);
+        ime.setText(mIme);
+        email.setText(mEmail);
 
         return view;
     }

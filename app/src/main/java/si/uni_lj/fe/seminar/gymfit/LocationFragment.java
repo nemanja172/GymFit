@@ -67,7 +67,7 @@ public class LocationFragment extends Fragment {
         protected String doInBackground(String... params) {
 
             String result="";
-            String host = "http://192.168.64.104/gymfit/fitnesi1.php";
+            String host = "http://192.168.64.104/gymfitApp/fitnesi1.php";
             try{
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
