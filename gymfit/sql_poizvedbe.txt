@@ -1,0 +1,64 @@
+POST
+INSERT INTO igralec (vzdevek, geslo, ime, priimek, email) VALUES ('$vzdevek', '$geslo', '$ime', '$priimek', '$email')
+INSERT INTO odigrana_igra (vzdevek, tezavnost, rezultat) VALUES ('$vzdevek', $tezavnost, $rezultat)
+
+GET
+SELECT vzdevek, ime, priimek, email FROM igralec
+SELECT vzdevek, ime, priimek, email FROM igralec WHERE vzdevek='$vzdevek'
+SELECT tezavnost, rezultat, casovni_zig FROM odigrana_igra WHERE vzdevek='$vzdevek'
+SELECT vzdevek, MAX(rezultat) FROM odigrana_igra WHERE tezavnost='$tezavnost' GROUP BY vzdevek ORDER BY MAX(rezultat) DESC LIMIT 5
+
+PUT
+UPDATE igralec SET geslo='$geslo', ime='$ime', priimek='$priimek', email='$email' WHERE vzdevek='$vzdevek'
+DELETE FROM igralec WHERE vzdevek='$vzdevek'
+
+SELECT ID_uporabnika ,Ime, Priimek, Email, Paket FROM uporabnik
+SELECT ID_uporabnika ,Ime, Priimek, Email, Paket FROM uporabnik WHERE ID_uporabnika = '$ID_uporabnika'
+
+SELECT datum, 
+(SELECT u.Ime from uporabnik as u where t.ID_uporabnika = u.ID_uporabnika) as Ime,
+(SELECT u.Priimek from uporabnik as u where t.ID_uporabnika = u.ID_uporabnika) as Priimek,
+(SELECT f.Ime from fitnes as f where f.ID_fitnesa = t.ID_fitnesa) as Lokacija
+FROM termin as t
+
+SELECT COUNT(*) as 'Število uporabljenih',
+(SELECT u.Ime from uporabnik as u where t.ID_uporabnika = u.ID_uporabnika) as Ime,
+(SELECT u.Priimek from uporabnik as u where t.ID_uporabnika = u.ID_uporabnika) as Priimek
+FROM termin as t
+WHERE ID_uporabnika ='$ID_uporabnika'
+
+DELETE FROM uporabnik WHERE ID_uporabnika='$ID_uporabnika'
+UPDATE uporabnik SET Ime='$Ime', Priimek='$Priimek', Geslo='$Geslo', Datum_rojstva='$Datum_rojstva', Spol='$Spol',
+Email='$Email', Paket='$Paket' WHERE ID_uporabnika='$ID_uporabnika'
+
+
+INSERT INTO uporabnik (ID_uporabnika, ime, priimek, geslo, Datum_rojstva, Spol, Tel_stevilka, Email, Paket) 
+VALUES ('$ID_uporabnika', '$ime', '$priimek', '$geslo', '$Datum_rojstva', '$Spol', '$Tel_stevilka', '$Email', '$Paket')
+
+INSERT INTO uporabnik (ime, priimek, geslo, Datum_rojstva, Spol, Tel_stevilka, Email, Paket) 
+VALUES ('Spela', 'Valic', 'speval', '1997-07-04', 'Z', '041-547858', 'spela@gmail.com', 'S')
+
+
+SELECT U.Ime as Ime, t.datum
+FROM termin t JOIN uporabnik u
+ON (t.ID_uporabnika = u.ID_uporabnika)
+WHERE u.Priimek = 'Mihajlovic'
+
+
+
+za POST
+
+{
+        "ID_uporabnika": "5",
+        "ime": "Frenk",
+        "priimek": "Sadl",
+        "geslo": "passwd2021",
+        "Datum_rojstva": "1991-03-12",
+        "Spol": "M",
+        "Tel_stevilka": "069-812356",
+        "email": "triglav12@yahoo.com",
+        "Paket": "L"
+}
+
+
+ID_termina, ID_uporabnika, ID_fitnesa, datum
